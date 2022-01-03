@@ -1,7 +1,7 @@
 # 从hello world到简单的CRUD后台框架
 ## 1. 构建一个简单的go工程
 ```shell
-$ makedir web_backend_simple
+$ mkdir web_backend_simple
 // 初始化 git
 $ git init
 // 使用 gomod 管理依赖
@@ -72,11 +72,19 @@ Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-
 Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
 ```
 不慌不慌，我们打开这个参考页面，并且得到解决方法，在代码里加上：
-```
+```go
 	r.SetTrustedProxies(nil)
 ```
 
-## 6. 修改工程结构：
+## 6. 配置文件
+### 6.1 配置文件的重要性
+* 对于公开的仓库，隐去初始化的重要信息
+* 便于平台部署，例如使用k8s的config map进行挂载
+```SHELL
+$ mkdir config
+$ touch config.go
 ```
-
+### 6.2 配置文件库的选择
+```go
+$ go get github.com/spf13/viper
 ```
